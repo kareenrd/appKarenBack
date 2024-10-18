@@ -20,6 +20,7 @@ public class ContratoEntity {
     @Column(nullable = false)
     private String regimen;
     @Column(nullable = false)
+    private String fileName;
     private String file;
     @Temporal(TemporalType.DATE)
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "America/Bogota")

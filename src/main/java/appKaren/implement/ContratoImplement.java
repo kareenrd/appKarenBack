@@ -6,6 +6,8 @@ import appKaren.services.ContratoService;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
@@ -28,7 +30,7 @@ public class ContratoImplement implements ContratoService {
     }
 
     @Override
-    public List<ContratoEntity> getAllContratos() {
-        return _contratoRepository.findAll();
+    public Page<ContratoEntity> getAllContratos(Pageable pageable) {
+        return _contratoRepository.findAll(pageable);
     }
 }

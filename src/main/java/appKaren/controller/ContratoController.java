@@ -3,6 +3,9 @@ package appKaren.controller;
 import appKaren.entity.ContratoEntity;
 import appKaren.services.ContratoService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.MediaType;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -29,7 +32,8 @@ public class ContratoController {
     }
 
     @GetMapping(value = "/getAll")
-    public List<ContratoEntity> getAllContratos (){
-        return _contratoService.getAllContratos();
+    public Page<ContratoEntity> getAllContratos (@RequestParam(defaultValue = "0") int page){
+        Pageable pageable = PageRequest.of(page, 10);
+        return _contratoService.getAllContratos(pageable);
     }
 }
